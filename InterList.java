@@ -15,7 +15,6 @@ public interface InterList {
 	public void printList();
 
 	public int size();
-// test
 
 	public void delete(Node n);
 
