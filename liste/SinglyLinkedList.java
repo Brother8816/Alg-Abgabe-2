@@ -156,7 +156,6 @@ public class SinglyLinkedList implements InterList {
 			arr[i] = n.data;
 			n = n.next;
 		}
-		System.out.println("test");
 
 		for (int i = 0; i < arr.length; i++) {
 			Student[] zarr = new Student[arr.length - i];
@@ -165,22 +164,28 @@ public class SinglyLinkedList implements InterList {
 			}
 			zarr = maxHeap(zarr);
 			zs = zarr[0];
-			zarr[0] = zarr[zarr.length - i];
-			zarr[zarr.length - i] = zs;
+			zarr[0] = zarr[zarr.length - 1];
+			zarr[zarr.length - 1] = zs;
 
 			for (int k = 0; k < zarr.length; k++) {
-				arr[i] = zarr[i];
+				arr[k] = zarr[k];
+
 			}
+
 		}
 
 		arrayToList(arr);
+		/*
+		 * for (int i = 0; i < arr.length; i++) {
+		 * System.out.println("zwischenergebniss"); System.out.println(arr[i]); }
+		 */
 
 	}
 
 	private void arrayToList(Student[] s) {
 		top = null;
 		for (int i = 0; i < s.length; i++) {
-			addAtStart(s[i]);
+			addAtEnd(s[i]);
 
 		}
 
@@ -189,17 +194,26 @@ public class SinglyLinkedList implements InterList {
 	private Student[] maxHeap(Student[] arr) {
 		Student zs;
 		for (int i = 1; i < arr.length / 2; i++) {
-			if (arr[i * 2 - 1].getMatrikelnummer() > arr[i * 2].getMatrikelnummer()) {
+			if (i * 2 < arr.length) {
+
+				if (arr[i * 2 - 1].getMatrikelnummer() > arr[i * 2].getMatrikelnummer()) {
+					if (arr[i * 2 - 1].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
+						zs = arr[i - 1];
+						arr[i - 1] = arr[i * 2 - 1];
+						arr[i * 2 - 1] = zs;
+					}
+				} else {
+					if (arr[i * 2].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
+						zs = arr[i - 1];
+						arr[i - 1] = arr[i * 2];
+						arr[i * 2] = zs;
+					}
+				}
+			} else {
 				if (arr[i * 2 - 1].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
 					zs = arr[i - 1];
 					arr[i - 1] = arr[i * 2 - 1];
 					arr[i * 2 - 1] = zs;
-				}
-			} else {
-				if (arr[i * 2].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
-					zs = arr[i - 1];
-					arr[i - 1] = arr[i * 2];
-					arr[i * 2] = zs;
 				}
 			}
 		}
