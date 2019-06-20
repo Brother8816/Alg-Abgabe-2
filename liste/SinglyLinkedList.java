@@ -131,11 +131,25 @@ public class SinglyLinkedList implements InterList {
 		}
 	}
 	
-	private void sortNames() {
+	private void sortVorname() {
+		//Radix Sort
+		int elements = size();
+		
+		Student[][] sorts = new Student[26][elements];
+	}
+	
+	private void sortNachname() {
+		//Radix Sort
+		int elements = size();
+		
+		Student[][] sorts = new Student[26][elements];
+	}
+	
+	private void sortMatrikelnummer() {
 		
 	}
 	
-	private void sortNumbers() {
+	private void sortStudiengang() {
 		
 	}
 
