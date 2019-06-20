@@ -73,6 +73,7 @@ public class SinglyLinkedList implements InterList {
 
 		while (n != null) {
 			a++;
+			n = n.next;
 		}
 
 		return a;
@@ -95,34 +96,35 @@ public class SinglyLinkedList implements InterList {
 	public void printSearch(String search, Token t) {
 		Node n = top;
 
-		String result = "Ergebnis der Suche nach: "+search+" im Feld "+ t+"\n";
-		
+		String result = "Ergebnis der Suche nach: " + search + " im Feld " + t + "\n";
+
 		if (n != null) {
 
 			while (n != null) {
-				
+
 				String data = n.data.getData(t);
-				
-				if(data.equals(search)) {
-					result += n.data.toString()+"\n";
+
+				if (data.equals(search)) {
+					result += n.data.toString() + "\n";
 				}
-				
+
 				n = n.next;
 			}
 		}
-		
+
 		System.out.println(result);
 	}
 
 	@Override
 	public void sort(Token t) {
-		switch(t) {
-		
+		switch (t) {
+
 		case VORNAME:
 			break;
 		case NACHNAME:
 			break;
 		case MATRIKELNUMMER:
+			sortMatrikelnummer();
 			break;
 		case STUDIENGANG:
 			break;
@@ -130,27 +132,84 @@ public class SinglyLinkedList implements InterList {
 			break;
 		}
 	}
-	
+
 	private void sortVorname() {
-		//Radix Sort
+		// Radix Sort
 		int elements = size();
-		
+
 		Student[][] sorts = new Student[26][elements];
 	}
-	
+
 	private void sortNachname() {
-		//Radix Sort
+		// Radix Sort
 		int elements = size();
-		
+
 		Student[][] sorts = new Student[26][elements];
 	}
-	
+
 	private void sortMatrikelnummer() {
-		
+
+		Student[] arr = new Student[size()];
+		Node n = top;
+		Student zs;
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = n.data;
+			n = n.next;
+		}
+		System.out.println("test");
+
+		for (int i = 0; i < arr.length; i++) {
+			Student[] zarr = new Student[arr.length - i];
+			for (int k = 0; k < zarr.length; k++) {
+				zarr[k] = arr[k];
+			}
+			zarr = maxHeap(zarr);
+			zs = zarr[0];
+			zarr[0] = zarr[zarr.length - i];
+			zarr[zarr.length - i] = zs;
+
+			for (int k = 0; k < zarr.length; k++) {
+				arr[i] = zarr[i];
+			}
+		}
+
+		arrayToList(arr);
+
 	}
-	
+
+	private void arrayToList(Student[] s) {
+		top = null;
+		for (int i = 0; i < s.length; i++) {
+			addAtStart(s[i]);
+
+		}
+
+	}
+
+	private Student[] maxHeap(Student[] arr) {
+		Student zs;
+		for (int i = 1; i < arr.length / 2; i++) {
+			if (arr[i * 2 - 1].getMatrikelnummer() > arr[i * 2].getMatrikelnummer()) {
+				if (arr[i * 2 - 1].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
+					zs = arr[i - 1];
+					arr[i - 1] = arr[i * 2 - 1];
+					arr[i * 2 - 1] = zs;
+				}
+			} else {
+				if (arr[i * 2].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
+					zs = arr[i - 1];
+					arr[i - 1] = arr[i * 2];
+					arr[i * 2] = zs;
+				}
+			}
+		}
+
+		return arr;
+
+	}
+
 	private void sortStudiengang() {
-		
+
 	}
 
 }
