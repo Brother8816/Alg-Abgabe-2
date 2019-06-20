@@ -115,17 +115,27 @@ public class SinglyLinkedList implements InterList {
 	}
 
 	@Override
-	public void sortRadix(Token t) {
+	public void sort(Token t) {
+		switch(t) {
 		
-		String v = top.data.getData(t);
-		
-		System.out.println();
+		case VORNAME:
+			break;
+		case NACHNAME:
+			break;
+		case MATRIKELNUMMER:
+			break;
+		case STUDIENGANG:
+			break;
+		default:
+			break;
+		}
+	}
+	
+	private void sortNames() {
 		
 	}
-
-	@Override
-	public void sortHeap(Token t) {
-		// TODO Auto-generated method stub
+	
+	private void sortNumbers() {
 		
 	}
 

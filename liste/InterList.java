@@ -22,7 +22,5 @@ public interface InterList {
 
 	public void printSearch(String search, Token t);
 
-	public void sortRadix(Token t);
-	
-	public void sortHeap(Token t);
+	public void sort(Token t);
 }
