@@ -157,9 +157,6 @@ public class SinglyLinkedList implements InterList {
 			arr[i] = n.data;
 			n = n.next;
 		}
-		for (int i = 0; i < arr.length; i++) {
-			System.out.println(arr[i]);
-		}
 
 		for (int i = 0; i < arr.length; i++) {
 			Student[] zarr = new Student[arr.length - i];
@@ -237,9 +234,6 @@ public class SinglyLinkedList implements InterList {
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = n.data;
 			n = n.next;
-		}
-		for (int i = 0; i < arr.length; i++) {
-			System.out.println(arr[i]);
 		}
 
 		for (int i = 0; i < arr.length; i++) {

@@ -16,11 +16,11 @@ public class Tests {
 
 		s1 = new Student("Io", "Kasto", 10, 11);
 		s2 = new Student("Son", "Goku", 9001, 11);
-		s3 = new Student("Naruto", "Uzumaki", 3, 9);
-		s4 = new Student("Boruto", "Uzumaki", 25, 25);
+		s3 = new Student("Naruto", "Uzumaki", -3, 9);
+		s4 = new Student("Boruto", "Uzumaki", -25, 25);
 		s5 = new Student("Robert", "Kleinschmidt", 568268, 221);
 		s6 = new Student("Jane", "Do", 0, 0);
-		s7 = new Student("Chuck", "Noris", 88, 88);
+		s7 = new Student("Chuck", "Noris", -88, 88);
 		s8 = new Student("Harry", "Potter", 155465, 457);
 		s9 = new Student("Ron", "Weasly", 21548, 457);
 		s10 = new Student("Hermine", "Granger", 125545, 489);
@@ -54,6 +54,7 @@ public class Tests {
 	@Test
 	public void ausgabe() {
 		sll.printList();
+		System.out.println("Ende");
 	}
 
 	@Test
@@ -62,7 +63,7 @@ public class Tests {
 		String search = "Goku";
 
 		sll.printSearch(search, Token.NACHNAME);
-
+		System.out.println("Ende");
 	}
 
 	@Test
@@ -70,6 +71,7 @@ public class Tests {
 		String search = "11";
 
 		sll.printSearch(search, Token.STUDIENGANG);
+		System.out.println("Ende");
 	}
 
 	@Test
@@ -77,6 +79,7 @@ public class Tests {
 		sll.sort(Token.MATRIKELNUMMER);
 		System.out.println("Liste sortiert nach Matrikelnummer");
 		sll.printList();
+		System.out.println("Ende");
 	}
 
 	@Test
@@ -84,6 +87,7 @@ public class Tests {
 		sll.sort(Token.STUDIENGANG);
 		System.out.println("Liste sortiert nach Studiengang");
 		sll.printList();
+		System.out.println("Ende");
 	}
 
 }
