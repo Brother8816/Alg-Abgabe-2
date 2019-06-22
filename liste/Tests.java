@@ -14,7 +14,7 @@ public class Tests {
 	@Before
 	public void start() {
 
-		s1 = new Student("Io", "Kasto", 10, 11);
+		s1 = new Student("Io", "Kasto", 1, 11);
 		s2 = new Student("Son", "Goku", 9, 11);
 		s3 = new Student("Naruto", "Uzumaki", 3, 9);
 		s4 = new Student("Boruto", "Uzumaki", 6, 25);
@@ -51,12 +51,12 @@ public class Tests {
 		}
 	}
 
-	@Test
+	@Ignore
 	public void ausgabe() {
 		sll.printList();
 	}
 
-	@Test
+	@Ignore
 	public void suchTest() {
 
 		String search = "Goku";
@@ -65,7 +65,7 @@ public class Tests {
 
 	}
 
-	@Test
+	@Ignore
 	public void suchTestB() {
 		String search = "11";
 

@@ -156,6 +156,9 @@ public class SinglyLinkedList implements InterList {
 			arr[i] = n.data;
 			n = n.next;
 		}
+		for (int i = 0; i < arr.length; i++) {
+			System.out.println(arr[i]);
+		}
 
 		for (int i = 0; i < arr.length; i++) {
 			Student[] zarr = new Student[arr.length - i];
@@ -163,9 +166,17 @@ public class SinglyLinkedList implements InterList {
 				zarr[k] = arr[k];
 			}
 			zarr = maxHeap(zarr);
+			System.out.println("zarr vor Tausch");
+			for (int o = 0; o < zarr.length; o++) {
+				System.out.println(zarr[o]);
+			}
 			zs = zarr[0];
 			zarr[0] = zarr[zarr.length - 1];
 			zarr[zarr.length - 1] = zs;
+			System.out.println("zarr nach Tausch");
+			for (int o = 0; o < zarr.length; o++) {
+				System.out.println(zarr[o]);
+			}
 
 			for (int k = 0; k < zarr.length; k++) {
 				arr[k] = zarr[k];
@@ -196,45 +207,50 @@ public class SinglyLinkedList implements InterList {
 		int n;
 		do {
 			n = 0;
-			for (int i = 1; i < arr.length / 2; i++) {
+			int p = 1;
+			System.out.println("p=" + p);
+			p++;
+			for (int i = 1; i < arr.length / 2 + 1; i++) {
+				System.out.println("i vor if=" + i);
 				if (i * 2 < arr.length) {
+					System.out.println("i nach if=" + i);
 
 					if (arr[i * 2 - 1].getMatrikelnummer() > arr[i * 2].getMatrikelnummer()) {
-						System.out.println("i*2-1 " + arr[i * 2 - 1]);
-						System.out.println("i*2 " + arr[i * 2]);
+						System.out.println("i=" + i + "i*2-1 " + arr[i * 2 - 1]);
+						System.out.println("i=" + i + "i*2 " + arr[i * 2]);
 						if (arr[i * 2 - 1].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
-							System.out.println("i*2-1 " + arr[i * 2 - 1]);
-							System.out.println("i-1 " + arr[i - 1]);
+							System.out.println("i=" + i + "i*2-1 " + arr[i * 2 - 1]);
+							System.out.println("i=" + i + "i-1 " + arr[i - 1]);
 							zs = arr[i - 1];
 							arr[i - 1] = arr[i * 2 - 1];
 							arr[i * 2 - 1] = zs;
 							n = n + 1;
-							System.out.println("i*2-1 " + arr[i * 2 - 1]);
-							System.out.println("i-1" + arr[i - 1]);
+							System.out.println("i=" + i + "i*2-1 " + arr[i * 2 - 1]);
+							System.out.println("i=" + i + "i-1" + arr[i - 1]);
 
 						}
 					} else {
 						if (arr[i * 2].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
-							System.out.println("i*2 " + arr[i * 2]);
-							System.out.println("i-1 " + arr[i - 1]);
+							System.out.println("i=" + i + "i*2 " + arr[i * 2]);
+							System.out.println("i=" + i + "i-1 " + arr[i - 1]);
 							zs = arr[i - 1];
 							arr[i - 1] = arr[i * 2];
 							arr[i * 2] = zs;
 							n = n + 1;
-							System.out.println("i*2 " + arr[i * 2]);
-							System.out.println("i-1 " + arr[i - 1]);
+							System.out.println("i=" + i + "i*2 " + arr[i * 2]);
+							System.out.println("i=" + i + "i-1 " + arr[i - 1]);
 						}
 					}
 				} else {
 					if (arr[i * 2 - 1].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
-						System.out.println("i*2-1" + arr[i * 2 - 1]);
-						System.out.println("i-1 " + arr[i - 1]);
+						System.out.println("i=" + i + "i*2-1" + arr[i * 2 - 1]);
+						System.out.println("i=" + i + "i-1 " + arr[i - 1]);
 						zs = arr[i - 1];
 						arr[i - 1] = arr[i * 2 - 1];
 						arr[i * 2 - 1] = zs;
 						n = n + 1;
-						System.out.println("i*2-1" + arr[i * 2 - 1]);
-						System.out.println("i-1 " + arr[i - 1]);
+						System.out.println("i=" + i + "i*2-1" + arr[i * 2 - 1]);
+						System.out.println("i=" + i + "i-1 " + arr[i - 1]);
 					}
 				}
 			}
