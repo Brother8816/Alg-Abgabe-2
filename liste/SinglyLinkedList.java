@@ -193,30 +193,52 @@ public class SinglyLinkedList implements InterList {
 
 	private Student[] maxHeap(Student[] arr) {
 		Student zs;
-		for (int i = 1; i < arr.length / 2; i++) {
-			if (i * 2 < arr.length) {
+		int n;
+		do {
+			n = 0;
+			for (int i = 1; i < arr.length / 2; i++) {
+				if (i * 2 < arr.length) {
 
-				if (arr[i * 2 - 1].getMatrikelnummer() > arr[i * 2].getMatrikelnummer()) {
+					if (arr[i * 2 - 1].getMatrikelnummer() > arr[i * 2].getMatrikelnummer()) {
+						System.out.println("i*2-1 " + arr[i * 2 - 1]);
+						System.out.println("i*2 " + arr[i * 2]);
+						if (arr[i * 2 - 1].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
+							System.out.println("i*2-1 " + arr[i * 2 - 1]);
+							System.out.println("i-1 " + arr[i - 1]);
+							zs = arr[i - 1];
+							arr[i - 1] = arr[i * 2 - 1];
+							arr[i * 2 - 1] = zs;
+							n = n + 1;
+							System.out.println("i*2-1 " + arr[i * 2 - 1]);
+							System.out.println("i-1" + arr[i - 1]);
+
+						}
+					} else {
+						if (arr[i * 2].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
+							System.out.println("i*2 " + arr[i * 2]);
+							System.out.println("i-1 " + arr[i - 1]);
+							zs = arr[i - 1];
+							arr[i - 1] = arr[i * 2];
+							arr[i * 2] = zs;
+							n = n + 1;
+							System.out.println("i*2 " + arr[i * 2]);
+							System.out.println("i-1 " + arr[i - 1]);
+						}
+					}
+				} else {
 					if (arr[i * 2 - 1].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
+						System.out.println("i*2-1" + arr[i * 2 - 1]);
+						System.out.println("i-1 " + arr[i - 1]);
 						zs = arr[i - 1];
 						arr[i - 1] = arr[i * 2 - 1];
 						arr[i * 2 - 1] = zs;
+						n = n + 1;
+						System.out.println("i*2-1" + arr[i * 2 - 1]);
+						System.out.println("i-1 " + arr[i - 1]);
 					}
-				} else {
-					if (arr[i * 2].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
-						zs = arr[i - 1];
-						arr[i - 1] = arr[i * 2];
-						arr[i * 2] = zs;
-					}
-				}
-			} else {
-				if (arr[i * 2 - 1].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
-					zs = arr[i - 1];
-					arr[i - 1] = arr[i * 2 - 1];
-					arr[i * 2 - 1] = zs;
 				}
 			}
-		}
+		} while (n != 0);
 
 		return arr;
 

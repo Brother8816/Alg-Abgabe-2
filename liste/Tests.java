@@ -15,15 +15,15 @@ public class Tests {
 	public void start() {
 
 		s1 = new Student("Io", "Kasto", 10, 11);
-		s2 = new Student("Son", "Goku", 9001, 11);
+		s2 = new Student("Son", "Goku", 9, 11);
 		s3 = new Student("Naruto", "Uzumaki", 3, 9);
-		s4 = new Student("Boruto", "Uzumaki", 25, 25);
-		s5 = new Student("Robert", "Kleinschmidt", 568268, 221);
+		s4 = new Student("Boruto", "Uzumaki", 6, 25);
+		s5 = new Student("Robert", "Kleinschmidt", 4, 221);
 		s6 = new Student("Jane", "Do", 0, 0);
-		s7 = new Student("Chuck", "Noris", 88, 88);
-		s8 = new Student("Harry", "Potter", 155465, 457);
-		s9 = new Student("Ron", "Weasly", 21548, 457);
-		s10 = new Student("Hermine", "Granger", 125545, 489);
+		s7 = new Student("Chuck", "Noris", 8, 88);
+		s8 = new Student("Harry", "Potter", 5, 457);
+		s9 = new Student("Ron", "Weasly", 2, 457);
+		s10 = new Student("Hermine", "Granger", 7, 489);
 
 		sll = new SinglyLinkedList();
 
