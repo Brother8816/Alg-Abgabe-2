@@ -156,6 +156,9 @@ public class SinglyLinkedList implements InterList {
 			arr[i] = n.data;
 			n = n.next;
 		}
+		for (int i = 0; i < arr.length; i++) {
+			System.out.println(arr[i]);
+		}
 
 		for (int i = 0; i < arr.length; i++) {
 			Student[] zarr = new Student[arr.length - i];
@@ -175,10 +178,6 @@ public class SinglyLinkedList implements InterList {
 		}
 
 		arrayToList(arr);
-		/*
-		 * for (int i = 0; i < arr.length; i++) {
-		 * System.out.println("zwischenergebniss"); System.out.println(arr[i]); }
-		 */
 
 	}
 
@@ -193,30 +192,38 @@ public class SinglyLinkedList implements InterList {
 
 	private Student[] maxHeap(Student[] arr) {
 		Student zs;
-		for (int i = 1; i < arr.length / 2; i++) {
-			if (i * 2 < arr.length) {
+		int n;
+		do {
+			n = 0;
+			for (int i = 1; i < arr.length / 2 + 1; i++) {
+				if (i * 2 < arr.length) {
 
-				if (arr[i * 2 - 1].getMatrikelnummer() > arr[i * 2].getMatrikelnummer()) {
+					if (arr[i * 2 - 1].getMatrikelnummer() > arr[i * 2].getMatrikelnummer()) {
+						if (arr[i * 2 - 1].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
+							zs = arr[i - 1];
+							arr[i - 1] = arr[i * 2 - 1];
+							arr[i * 2 - 1] = zs;
+							n = n + 1;
+
+						}
+					} else {
+						if (arr[i * 2].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
+							zs = arr[i - 1];
+							arr[i - 1] = arr[i * 2];
+							arr[i * 2] = zs;
+							n = n + 1;
+						}
+					}
+				} else {
 					if (arr[i * 2 - 1].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
 						zs = arr[i - 1];
 						arr[i - 1] = arr[i * 2 - 1];
 						arr[i * 2 - 1] = zs;
+						n = n + 1;
 					}
-				} else {
-					if (arr[i * 2].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
-						zs = arr[i - 1];
-						arr[i - 1] = arr[i * 2];
-						arr[i * 2] = zs;
-					}
-				}
-			} else {
-				if (arr[i * 2 - 1].getMatrikelnummer() > arr[i - 1].getMatrikelnummer()) {
-					zs = arr[i - 1];
-					arr[i - 1] = arr[i * 2 - 1];
-					arr[i * 2 - 1] = zs;
 				}
 			}
-		}
+		} while (n != 0);
 
 		return arr;
 
