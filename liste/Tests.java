@@ -78,4 +78,12 @@ public class Tests {
 		System.out.println("Liste sortiert nach Matrikelnummer");
 		sll.printList();
 	}
+
+	@Test
+	public void heapSortStudiengang() {
+		sll.sort(Token.STUDIENGANG);
+		System.out.println("Liste sortiert nach Studiengang");
+		sll.printList();
+	}
+
 }

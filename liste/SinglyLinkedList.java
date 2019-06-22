@@ -127,6 +127,7 @@ public class SinglyLinkedList implements InterList {
 			sortMatrikelnummer();
 			break;
 		case STUDIENGANG:
+			sortStudiengang();
 			break;
 		default:
 			break;
@@ -165,7 +166,7 @@ public class SinglyLinkedList implements InterList {
 			for (int k = 0; k < zarr.length; k++) {
 				zarr[k] = arr[k];
 			}
-			zarr = maxHeap(zarr);
+			zarr = maxHeapMatrikelnummer(zarr);
 			zs = zarr[0];
 			zarr[0] = zarr[zarr.length - 1];
 			zarr[zarr.length - 1] = zs;
@@ -181,16 +182,7 @@ public class SinglyLinkedList implements InterList {
 
 	}
 
-	private void arrayToList(Student[] s) {
-		top = null;
-		for (int i = 0; i < s.length; i++) {
-			addAtEnd(s[i]);
-
-		}
-
-	}
-
-	private Student[] maxHeap(Student[] arr) {
+	private Student[] maxHeapMatrikelnummer(Student[] arr) {
 		Student zs;
 		int n;
 		do {
@@ -229,7 +221,84 @@ public class SinglyLinkedList implements InterList {
 
 	}
 
+	private void arrayToList(Student[] s) {
+		top = null;
+		for (int i = 0; i < s.length; i++) {
+			addAtEnd(s[i]);
+
+		}
+
+	}
+
 	private void sortStudiengang() {
+		Student[] arr = new Student[size()];
+		Node n = top;
+		Student zs;
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = n.data;
+			n = n.next;
+		}
+		for (int i = 0; i < arr.length; i++) {
+			System.out.println(arr[i]);
+		}
+
+		for (int i = 0; i < arr.length; i++) {
+			Student[] zarr = new Student[arr.length - i];
+			for (int k = 0; k < zarr.length; k++) {
+				zarr[k] = arr[k];
+			}
+			zarr = maxHeapStudiengang(zarr);
+			zs = zarr[0];
+			zarr[0] = zarr[zarr.length - 1];
+			zarr[zarr.length - 1] = zs;
+
+			for (int k = 0; k < zarr.length; k++) {
+				arr[k] = zarr[k];
+
+			}
+
+		}
+
+		arrayToList(arr);
+
+	}
+
+	private Student[] maxHeapStudiengang(Student[] arr) {
+		Student zs;
+		int n;
+		do {
+			n = 0;
+			for (int i = 1; i < arr.length / 2 + 1; i++) {
+				if (i * 2 < arr.length) {
+
+					if (arr[i * 2 - 1].getStudiengang() > arr[i * 2].getStudiengang()) {
+						if (arr[i * 2 - 1].getStudiengang() > arr[i - 1].getStudiengang()) {
+							zs = arr[i - 1];
+							arr[i - 1] = arr[i * 2 - 1];
+							arr[i * 2 - 1] = zs;
+							n = n + 1;
+
+						}
+					} else {
+						if (arr[i * 2].getStudiengang() > arr[i - 1].getStudiengang()) {
+							zs = arr[i - 1];
+							arr[i - 1] = arr[i * 2];
+							arr[i * 2] = zs;
+							n = n + 1;
+						}
+					}
+				} else {
+					if (arr[i * 2 - 1].getStudiengang() > arr[i - 1].getStudiengang()) {
+						zs = arr[i - 1];
+						arr[i - 1] = arr[i * 2 - 1];
+						arr[i * 2 - 1] = zs;
+						n = n + 1;
+					}
+				}
+			}
+		} while (n != 0);
+
+		return arr;
 
 	}
 
