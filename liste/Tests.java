@@ -13,6 +13,7 @@ public class Tests {
 
 	@Before
 	public void start() {
+		// init der Studenten
 
 		s1 = new Student("Io", "Kasto", 10, 11);
 		s2 = new Student("Son", "Goku", 9001, 11);
