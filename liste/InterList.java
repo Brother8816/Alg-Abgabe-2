@@ -4,7 +4,7 @@ import data.Student;
 
 public interface InterList {
 
-	public Node createElement();
+	public Node createElement(Student s);
 
 	public void addAtStart(Student s);
 
@@ -16,7 +16,7 @@ public interface InterList {
 
 	public int size();
 
-	public void delete(Node n);
+	public void delete(int index);
 
 	public void deleteList();
 
