@@ -4,8 +4,6 @@ import data.Student;
 
 public interface InterList {
 
-	public Node createElement(Student s);
-
 	public void addAtStart(Student s);
 
 	public void addAtEnd(Student s);

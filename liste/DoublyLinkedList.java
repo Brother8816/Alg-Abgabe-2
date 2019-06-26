@@ -11,11 +11,6 @@ public class DoublyLinkedList implements InterList {
 
 	}
 
-	@Override
-	public Node createElement(Student s) {
-		NodeDouble n = new NodeDouble(s);
-		return n;
-	}
 
 	@Override
 	public void addAtStart(Student s) {

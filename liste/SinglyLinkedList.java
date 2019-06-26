@@ -9,11 +9,6 @@ public class SinglyLinkedList implements InterList {
 	public SinglyLinkedList() {
 	}
 
-	@Override
-	public Node createElement(Student student) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void addAtStart(Student s) {
