@@ -45,7 +45,12 @@ public class SinglyLinkedList implements InterList {
 
 	@Override
 	public void printElement(int index) {
-		// TODO Auto-generated method stub
+		Node n = top;
+		for (int i = 1; i < index; i++) {
+			n = n.next;
+		}
+		System.out.println(n.data);
+
 	}
 
 	@Override
@@ -78,11 +83,20 @@ public class SinglyLinkedList implements InterList {
 	}
 
 	@Override
-	//index based deletion
+	// index based deletion
 	public void delete(int index) {
+		Node n = top;
+		Node beforeNode;
+		Node nextNode;
+		for (int i = 1; i < index - 1; i++) {
+			n = n.next;
+		}
+		beforeNode = n;
+		n = n.next;
+		nextNode = n.next;
+		beforeNode.next = nextNode;
+		System.out.println(n.data + " wurde geloescht");
 
-		if (top != null)
-			top = top.next;
 	}
 
 	@Override
@@ -125,8 +139,10 @@ public class SinglyLinkedList implements InterList {
 			sortName(t);
 			break;
 		case MATRIKELNUMMER:
+			sortMatrikelnummer();
 			break;
 		case STUDIENGANG:
+			sortStudiengang();
 			break;
 		default:
 			break;
@@ -149,43 +165,44 @@ public class SinglyLinkedList implements InterList {
 	}
 
 	private void sortName(Token t) {
-		
+
 		final int chars = size();
 		final int keys = 26;
-		
+
 		Student[] students = this.asArray();
-		
-		//instantiate the queues where the data will be sorted
+
+		// instantiate the queues where the data will be sorted
 		SinglyLinkedList[] queues = new SinglyLinkedList[keys];
-		for(int i = 0; i < queues.length; i++) {
+		for (int i = 0; i < queues.length; i++) {
 			queues[i] = new SinglyLinkedList();
 		}
-		
-		//iterating over the length of the given strings
-		for(int i = chars-1; i >= 0; i--) {
-			
-			//iterating over the given students
-			for(int j = 0; j < students.length; j++) {
-				
+
+		// iterating over the length of the given strings
+		for (int i = chars - 1; i >= 0; i--) {
+
+			// iterating over the given students
+			for (int j = 0; j < students.length; j++) {
+
 				String name = students[j].getData(t).toLowerCase();
-				
-				//iterating over the queues to find one that matches the current character of the current name
-				for(int k = 0; k < keys; k++) {
-					char current = (char) ('a'+ k);
-					
-					if(current == name.charAt(i)) {
+
+				// iterating over the queues to find one that matches the current character of
+				// the current name
+				for (int k = 0; k < keys; k++) {
+					char current = (char) ('a' + k);
+
+					if (current == name.charAt(i)) {
 						queues[k].addAtStart(students[j]);
 					}
 				}
 			}
-			
+
 			int studentsArrayIndex = 0;
-			for(int a = 0; a < queues.length; a++) {
-				
+			for (int a = 0; a < queues.length; a++) {
+
 				SinglyLinkedList queue = queues[a];
 				Student[] s = queue.asArray();
-				//writing the gained students into the students array
-				for(int b = 0; b < s.length; b++) {
+				// writing the gained students into the students array
+				for (int b = 0; b < s.length; b++) {
 					students[studentsArrayIndex] = s[b];
 					studentsArrayIndex++;
 				}
@@ -193,10 +210,10 @@ public class SinglyLinkedList implements InterList {
 			}
 			studentsArrayIndex = 0;
 		}
-		
-		System.out.println("Sortiert nach: "+t);
-		for(int i = 0; i < students.length; i++) {
-			System.out.println("-->"+students[i]);
+
+		System.out.println("Sortiert nach: " + t);
+		for (int i = 0; i < students.length; i++) {
+			System.out.println("-->" + students[i]);
 		}
 	}
 
@@ -347,6 +364,5 @@ public class SinglyLinkedList implements InterList {
 		return arr;
 
 	}
-
 
 }
