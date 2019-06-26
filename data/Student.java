@@ -1,18 +1,20 @@
 package data;
 
+import liste.ConstantString;
 import liste.Token;
 
 public class Student {
-
-	String vorname;
-	String nachname;
+	
+	ConstantString vorname;
+	ConstantString nachname;
 	int matrikelnummer;
 	int studiengang;
 	
+	//TODO catch special chars
 	public Student(String vorname, String nachname, int matrikelnummer, int studiengang) {
 		super();
-		this.vorname = vorname;
-		this.nachname = nachname;
+		this.vorname = new ConstantString(vorname);
+		this.nachname = new ConstantString(nachname);
 		this.matrikelnummer = matrikelnummer;
 		this.studiengang = studiengang;
 	}
@@ -21,9 +23,9 @@ public class Student {
 		
 		switch(t) {
 		case VORNAME:
-			return vorname;
+			return vorname.getString();
 		case NACHNAME:
-			return nachname;
+			return nachname.getString();
 		case MATRIKELNUMMER:
 			return new Integer(matrikelnummer).toString();
 		case STUDIENGANG:
@@ -36,19 +38,11 @@ public class Student {
 	}
 	
 	public String getVorname() {
-		return vorname;
-	}
-
-	public void setVorname(String vorname) {
-		this.vorname = vorname;
+		return vorname.getRealString();
 	}
 
 	public String getNachname() {
-		return nachname;
-	}
-
-	public void setNachname(String nachname) {
-		this.nachname = nachname;
+		return nachname.getRealString();
 	}
 
 	public int getMatrikelnummer() {
@@ -69,7 +63,7 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [vorname=" + vorname + ", nachname=" + nachname + ", matrikelnummer=" + matrikelnummer
+		return "Student [vorname=" + vorname.getRealString() + ", nachname=" + nachname.getRealString() + ", matrikelnummer=" + matrikelnummer
 				+ ", studiengang=" + studiengang + "]";
 	}
 	

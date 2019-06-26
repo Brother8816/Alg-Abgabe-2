@@ -41,7 +41,7 @@ public class SinglyLinkedList implements InterList {
 	@Override
 	public void printElement(int index) {
 		Node n = top;
-		for (int i = 1; i < index; i++) {
+		for (int i = 0; i < index; i++) {
 			n = n.next;
 		}
 		System.out.println(n.data);
