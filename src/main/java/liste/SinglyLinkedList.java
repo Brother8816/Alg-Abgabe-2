@@ -107,12 +107,12 @@ public class SinglyLinkedList implements InterList {
 		String result = "Ergebnis der Suche nach: " + search + " im Feld " + t + "\n";
 
 		if (n != null) {
-
+			
 			while (n != null) {
 
 				String data = n.data.getData(t);
-
-				if (data.equals(search)) {
+				
+				if (data.contains(search.toLowerCase())) {
 					result += n.data.toString() + "\n";
 				}
 
@@ -205,11 +205,8 @@ public class SinglyLinkedList implements InterList {
 			}
 			studentsArrayIndex = 0;
 		}
-
-		System.out.println("Sortiert nach: " + t);
-		for (int i = 0; i < students.length; i++) {
-			System.out.println("-->" + students[i]);
-		}
+		
+		arrayToList(students);
 	}
 
 	private void sortMatrikelnummer() {

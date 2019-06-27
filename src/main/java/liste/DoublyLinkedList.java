@@ -111,7 +111,7 @@ public class DoublyLinkedList implements InterList {
 
 				String data = n.data.getData(t);
 
-				if (data.equals(search)) {
+				if (data.contains(search.toLowerCase())) {
 					result += n.data.toString() + "\n";
 				}
 

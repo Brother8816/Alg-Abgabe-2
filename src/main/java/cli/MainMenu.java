@@ -19,7 +19,7 @@ public class MainMenu {
 		
 		int pick = -1;
 		
-		System.out.println("Hauptmenü");
+		System.out.println(Phrases.framing("Hauptmenü"));
 		for(int i = 0; i < opts.length; i++) {
 			System.out.printf("%-3d: %s%n", i, opts[i]);
 		}
