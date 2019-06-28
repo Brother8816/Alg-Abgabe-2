@@ -6,6 +6,39 @@ import data.Student;
 
 public class Phrases {
 
+	private static String insertName(String info) {
+		
+		String ret = "";
+		
+		MainMenu.refreshScan();
+		
+		System.out.println(info + "Erlaubte Eingaben: (a-z) und (A-Z)");
+		
+		System.out.print(">");
+		String scan = MainMenu.scan.next();
+		
+		String lowerScan = scan.toLowerCase();
+		
+		for(int i = 0; i < lowerScan.length(); i++) {
+			
+			char c = lowerScan.charAt(i);
+			
+			if(c < 'a' || c > 'z') {
+				
+				System.out.println("Bitte keine Sonderzeichen verwenden!");
+				
+				ret = insertName(info);
+			} else {
+				ret = scan;
+			}
+			
+		}
+		
+		
+		
+		return ret;
+	}
+	
 	public static boolean binaryOption() {
 
 		System.out.println("(y/n)");
@@ -79,15 +112,15 @@ public class Phrases {
 		int studiengang = -1;
 
 		System.out.println("Eingabe der folgenden Werte:");
-		System.out.println("Vorname:");
-		vorname = MainMenu.scan.next();
-		System.out.println("Nachname:");
-		nachname = MainMenu.scan.next();
+		vorname = insertName("Vorname: ");
+		nachname = insertName("Nachname: ");
 
 		try {
 			System.out.println("Matrikelnummer:");
+			System.out.print(">");
 			matrikelnummer = MainMenu.scan.nextInt();
 			System.out.println("Studiengang:");
+			System.out.print(">");
 			studiengang = MainMenu.scan.nextInt();
 		} catch (InputMismatchException e) {
 			System.out.println("Nur Zahlen sind erlaubt!");
