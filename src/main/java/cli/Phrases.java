@@ -3,6 +3,7 @@ package cli;
 import java.util.InputMismatchException;
 
 import data.Student;
+import liste.ConstantString;
 
 public class Phrases {
 
@@ -18,6 +19,11 @@ public class Phrases {
 		String scan = MainMenu.scan.next();
 		
 		String lowerScan = scan.toLowerCase();
+		
+		if(scan.length() > ConstantString.MAX_NAME_LENGTH) {
+			System.out.println("Bitte keine Zeichenreihe laenger als "+ConstantString.MAX_NAME_LENGTH+" eingeben!");
+			ret = insertName(info);
+		}
 		
 		for(int i = 0; i < lowerScan.length(); i++) {
 			
