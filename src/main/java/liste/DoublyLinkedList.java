@@ -204,11 +204,6 @@ public class DoublyLinkedList implements InterList {
 			}
 			studentsArrayIndex = 0;
 		}
-
-		System.out.println("Sortiert nach: " + t);
-		for (int i = 0; i < students.length; i++) {
-			System.out.println("-->" + students[i]);
-		}
 	}
 
 	private void sortMatrikelnummer() {
